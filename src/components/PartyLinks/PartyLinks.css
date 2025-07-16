@@ -1,3 +1,30 @@
 .Party-links {
-  color: red;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  list-style: none;
+  margin: 2.5rem 1rem;
+}
+
+.Party-link {
+  padding: 1rem;
+  color: inherit;
+  border: 3px solid #bb1919;
+  background-color: white;
+}
+
+.Party-link-anchor-container {
+  display: inline-block;
+  color: inherit;
+  transition: transform 0.25s;
+  transform-origin: left;
+}
+
+.Party-link-anchor-container a {
+  color: inherit;
+}
+
+.Party-link-anchor-container:hover {
+  transform-origin: left;
+  transform: scale(1.1);
 }
