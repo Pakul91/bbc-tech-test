@@ -27,10 +27,12 @@ main {
 .Scoreboard-refresh {
   padding: 1rem;
   border: 3px solid #bb1919;
+  background-color: white;
   margin-top: 1rem;
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.25s;
+  font-size: 1rem;
 }
 
 .Scoreboard-refresh:hover {
