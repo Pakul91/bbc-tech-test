@@ -1,32 +1,41 @@
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import Scoreboard from './Scoreboard';
-import dataFetcher from '../dataFetcher';
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
+import Scoreboard from "./Scoreboard";
+import dataFetcher from "../dataFetcher";
 
-jest.mock('../dataFetcher');
+jest.mock("../dataFetcher");
 
-test('renders Results', async () => {
+test("renders Results", async () => {
   dataFetcher.mockImplementationOnce(() => {
     return Promise.resolve({
       isComplete: false,
       results: [
         {
-          'party': 'Giraffe Party',
-          'candidateId': 2,
-          'votes': '9900'
-        }
-      ]
-    })
+          party: "Giraffe Party",
+          candidateId: 2,
+          votes: "9900",
+          candidateName: "Lord Buckethead",
+        },
+      ],
+    });
   });
 
   render(<Scoreboard />);
 
   await waitFor(() => {
-    const resultParty = within(screen.getByRole('table')).getByText(/Giraffe Party/i);
+    const resultParty = within(screen.getByRole("table")).getByText(
+      /Giraffe Party/i
+    );
     expect(resultParty).toBeInTheDocument();
   });
 });
 
-test('renders error state', async () => {
+test("renders error state", async () => {
   dataFetcher.mockImplementationOnce(() => {
     throw new Error();
   });
@@ -39,18 +48,19 @@ test('renders error state', async () => {
   });
 });
 
-test('fetches results again when refresh button clicked', async () => {
+test("fetches results again when refresh button clicked", async () => {
   dataFetcher.mockImplementationOnce(() => {
     return Promise.resolve({
       isComplete: false,
       results: [
         {
-          'party': 'Giraffe Party',
-          'candidateId': 2,
-          'votes': '9900'
-        }
-      ]
-    })
+          party: "Giraffe Party",
+          candidateId: 2,
+          votes: "9900",
+          candidateName: "Lord Buckethead",
+        },
+      ],
+    });
   });
 
   dataFetcher.mockImplementationOnce(() => {
@@ -58,12 +68,13 @@ test('fetches results again when refresh button clicked', async () => {
       isComplete: false,
       results: [
         {
-          'party': 'Giraffe Party',
-          'candidateId': 2,
-          'votes': '12345'
-        }
-      ]
-    })
+          party: "Giraffe Party",
+          candidateId: 2,
+          votes: "12345",
+          candidateName: "Lord Buckethead",
+        },
+      ],
+    });
   });
 
   render(<Scoreboard />);
