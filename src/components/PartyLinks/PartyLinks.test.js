@@ -1,14 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import PartyLinks from ".";
+import partyLinksData from "../../data/partyLinksData.json";
 
-const PARTIES = [
-  { name: "Hippo Party", url: "https://en.wikipedia.org/wiki/Hippopotamus" },
-  { name: "Giraffe Party", url: "https://en.wikipedia.org/wiki/Giraffe" },
-  { name: "Tiger Party", url: "https://en.wikipedia.org/wiki/Tiger" },
-  { name: "Zebra Party", url: "https://en.wikipedia.org/wiki/Zebra" },
-  { name: "Meerkat Party", url: "https://en.wikipedia.org/wiki/Meerkat" },
-  { name: "Pelican Party", url: "https://en.wikipedia.org/wiki/Pelican" },
-];
+const PARTIES = partyLinksData;
 
 test("renders all the party links", async () => {
   render(<PartyLinks />);

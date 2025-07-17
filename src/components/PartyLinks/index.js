@@ -1,25 +1,19 @@
 import "./PartyLinks.css";
+import partyLinksData from "../../data/partyLinksData.json";
 
-const PARTIES = [
-  { name: "Hippo Party", url: "https://en.wikipedia.org/wiki/Hippopotamus" },
-  { name: "Giraffe Party", url: "https://en.wikipedia.org/wiki/Giraffe" },
-  { name: "Tiger Party", url: "https://en.wikipedia.org/wiki/Tiger" },
-  { name: "Zebra Party", url: "https://en.wikipedia.org/wiki/Zebra" },
-  { name: "Meerkat Party", url: "https://en.wikipedia.org/wiki/Meerkat" },
-  { name: "Pelican Party", url: "https://en.wikipedia.org/wiki/Pelican" },
-];
+const PARTIES = partyLinksData;
 
 function PartyLinks() {
   return (
-    <div className="Party-links">
+    <ul className="Party-links">
       {PARTIES.map((party) => (
-        <span className="Party-link" key={party.name}>
-          <span className="Party-link-anchor-container">
-            <a href={party.url}>{party.name}</a>
-          </span>
-        </span>
+        <li key={party.name} className="Party-link">
+          <a href={party.url} className="Party-link-anchor-container">
+            {party.name}
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
